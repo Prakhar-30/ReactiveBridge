@@ -59,22 +59,49 @@ export default function FuturisticBridgeDApp() {
 
   const currentTheme = themes[theme]
 
+  // const renderNFTImage = () => {
+  //   if (nftId === '1') {
+  //     return (
+  //       <div className="mt-4 flex justify-center">
+  //         <div className="w-32 h-32 bg-gray-200 rounded-lg overflow-hidden">
+  //           <div className="w-full h-full grid grid-cols-8 grid-rows-8">
+  //             {Array(64).fill(0).map((_, i) => (
+  //               <div key={i} className={`bg-${['blue', 'cyan', 'teal', 'sky', 'indigo'][Math.floor(Math.random() * 5)]}-${Math.floor(Math.random() * 3 + 3)}00`}></div>
+  //             ))}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )
+  //   }
+  //   return null
+  // }
   const renderNFTImage = () => {
     if (nftId === '1') {
+      // Predefine a list of Tailwind color classes
+      const colors = [
+        'bg-blue-300', 'bg-blue-400', 'bg-blue-500',
+        'bg-cyan-300', 'bg-cyan-400', 'bg-cyan-500',
+        'bg-teal-300', 'bg-teal-400', 'bg-teal-500',
+        'bg-sky-300', 'bg-sky-400', 'bg-sky-500',
+        'bg-indigo-300', 'bg-indigo-400', 'bg-indigo-500',
+      ];
+  
       return (
         <div className="mt-4 flex justify-center">
           <div className="w-32 h-32 bg-gray-200 rounded-lg overflow-hidden">
             <div className="w-full h-full grid grid-cols-8 grid-rows-8">
               {Array(64).fill(0).map((_, i) => (
-                <div key={i} className={`bg-${['blue', 'cyan', 'teal', 'sky', 'indigo'][Math.floor(Math.random() * 5)]}-${Math.floor(Math.random() * 3 + 3)}00`}></div>
+                // Select a random color from the pre-defined array
+                <div key={i} className={`${colors[Math.floor(Math.random() * colors.length)]}`}></div>
               ))}
             </div>
           </div>
         </div>
-      )
+      );
     }
     return null
   }
+
 
   return (
     <div className={`min-h-screen ${currentTheme.background} ${currentTheme.text} font-sans overflow-hidden transition-all duration-300 flex flex-col`}>
